@@ -12,8 +12,9 @@ concurrency:
 
 jobs:
   quality:
-    # Runner self-hosted de la org con fallback a github-hosted.
-    runs-on: ${{ vars.CI_RUNNER && fromJSON(vars.CI_RUNNER) || 'ubuntu-latest' }}
+    # Self-hosted via CI_RUNNER se retiró porque los runners estaban offline.
+    # Reintroducir solo cuando exista un runner etiquetado y saludable.
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
 
@@ -46,7 +47,9 @@ jobs:
         run: pnpm build
 
   e2e:
-    runs-on: ${{ vars.CI_RUNNER && fromJSON(vars.CI_RUNNER) || 'ubuntu-latest' }}
+    # Self-hosted via CI_RUNNER se retiró porque los runners estaban offline.
+    # Reintroducir solo cuando exista un runner etiquetado y saludable.
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
 
