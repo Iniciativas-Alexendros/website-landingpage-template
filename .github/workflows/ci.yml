@@ -95,6 +95,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: next-build
+          # `.next` es un directorio oculto; sin esto upload-artifact no encuentra archivos.
+          include-hidden-files: true
           path: |
             apps/landing/.next
             !apps/landing/.next/cache
